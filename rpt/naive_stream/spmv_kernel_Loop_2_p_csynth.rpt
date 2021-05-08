@@ -1,0 +1,161 @@
+
+
+================================================================
+== Vivado HLS Report for 'spmv_kernel_Loop_2_p'
+================================================================
+* Date:           Sat May  8 21:39:12 2021
+
+* Version:        2019.2 (Build 2704478 on Wed Nov 06 22:10:23 MST 2019)
+* Project:        proj_spmv_naive_stream
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  | 5.00 ns | 3.254 ns |   0.62 ns  |
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+------+------+---------+
+    |  Latency (cycles) |   Latency (absolute)  |   Interval  | Pipeline|
+    |   min   |   max   |    min    |    max    |  min |  max |   Type  |
+    +---------+---------+-----------+-----------+------+------+---------+
+    |     3280|     3280| 16.400 us | 16.400 us |  3280|  3280|   none  |
+    +---------+---------+-----------+-----------+------+------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |          |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+        |- Loop 1  |     3278|     3278|         3|          1|          1|  3277|    yes   |
+        +----------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+-----+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  | URAM|
++-----------------+---------+-------+--------+-------+-----+
+|DSP              |        -|      -|       -|      -|    -|
+|Expression       |        -|      -|       0|     35|    -|
+|FIFO             |        -|      -|       -|      -|    -|
+|Instance         |        -|      -|       -|      -|    -|
+|Memory           |        -|      -|       -|      -|    -|
+|Multiplexer      |        -|      -|       -|     75|    -|
+|Register         |        -|      -|      85|      -|    -|
++-----------------+---------+-------+--------+-------+-----+
+|Total            |        0|      0|      85|    110|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Available        |      280|    220|  106400|  53200|    0|
++-----------------+---------+-------+--------+-------+-----+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |    0|
++-----------------+---------+-------+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48E: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |i_fu_105_p2                       |     +    |      0|  0|  12|          12|           1|
+    |ap_block_pp0_stage0_01001         |    and   |      0|  0|   2|           1|           1|
+    |icmp_ln19_fu_99_p2                |   icmp   |      0|  0|  13|          12|          11|
+    |ap_block_state1                   |    or    |      0|  0|   2|           1|           1|
+    |ap_block_state4_pp0_stage0_iter2  |    or    |      0|  0|   2|           1|           1|
+    |ap_enable_pp0                     |    xor   |      0|  0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1           |    xor   |      0|  0|   2|           2|           1|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+    |Total                             |          |      0|  0|  35|          30|          18|
+    +----------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------+----+-----------+-----+-----------+
+    |           Name          | LUT| Input Size| Bits| Total Bits|
+    +-------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                |  21|          4|    1|          4|
+    |ap_done                  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1  |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter2  |   9|          2|    1|          2|
+    |cols_fifo_V_blk_n        |   9|          2|    1|          2|
+    |i1_0_reg_88              |   9|          2|   12|         24|
+    |values_fifo_V_blk_n      |   9|          2|    1|          2|
+    +-------------------------+----+-----------+-----+-----------+
+    |Total                    |  75|         16|   18|         38|
+    +-------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +---------------------------------+----+----+-----+-----------+
+    |               Name              | FF | LUT| Bits| Const Bits|
+    +---------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                        |   3|   0|    3|          0|
+    |ap_done_reg                      |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0          |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1          |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2          |   1|   0|    1|          0|
+    |i1_0_reg_88                      |  12|   0|   12|          0|
+    |icmp_ln19_reg_117                |   1|   0|    1|          0|
+    |icmp_ln19_reg_117_pp0_iter1_reg  |   1|   0|    1|          0|
+    |tmp_3_reg_141                    |  32|   0|   32|          0|
+    |tmp_reg_136                      |  32|   0|   32|          0|
+    +---------------------------------+----+----+-----+-----------+
+    |Total                            |  85|   0|   85|          0|
+    +---------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------+-----+-----+------------+----------------------+--------------+
+|       RTL Ports      | Dir | Bits|  Protocol  |     Source Object    |    C Type    |
++----------------------+-----+-----+------------+----------------------+--------------+
+|ap_clk                |  in |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|ap_rst                |  in |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|ap_start              |  in |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|ap_done               | out |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|ap_continue           |  in |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|ap_idle               | out |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|ap_ready              | out |    1| ap_ctrl_hs | spmv_kernel_Loop_2_p | return value |
+|values_address0       | out |   12|  ap_memory |        values        |     array    |
+|values_ce0            | out |    1|  ap_memory |        values        |     array    |
+|values_q0             |  in |   32|  ap_memory |        values        |     array    |
+|values_fifo_V_din     | out |   32|   ap_fifo  |     values_fifo_V    |    pointer   |
+|values_fifo_V_full_n  |  in |    1|   ap_fifo  |     values_fifo_V    |    pointer   |
+|values_fifo_V_write   | out |    1|   ap_fifo  |     values_fifo_V    |    pointer   |
+|cols_address0         | out |   12|  ap_memory |         cols         |     array    |
+|cols_ce0              | out |    1|  ap_memory |         cols         |     array    |
+|cols_q0               |  in |   32|  ap_memory |         cols         |     array    |
+|cols_fifo_V_din       | out |   32|   ap_fifo  |      cols_fifo_V     |    pointer   |
+|cols_fifo_V_full_n    |  in |    1|   ap_fifo  |      cols_fifo_V     |    pointer   |
+|cols_fifo_V_write     | out |    1|   ap_fifo  |      cols_fifo_V     |    pointer   |
++----------------------+-----+-----+------------+----------------------+--------------+
+

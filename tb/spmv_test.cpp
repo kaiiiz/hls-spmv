@@ -1,4 +1,4 @@
-#include "spmv.h"
+#include "../src/spmv.h"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -104,14 +104,7 @@ int main(){
 	load_cols();
 	gen_input();
 
-	// rowPtr to rows_length
-	int rows_length[NUM_ROWS] = {0};
-	for (int i = 1; i < NUM_ROWS + 1; i++) {
-		rows_length[i - 1] = rowPtr[i] - rowPtr[i - 1];
-	}
-
-
-	spmv_stream(rows_length, columnIndex, values, y, x);
+	spmv(rowPtr, columnIndex, values, y, x);
 	matrixvector(M, y_sw, x);
 
 	for(int i = 0; i < SIZE; i++) {

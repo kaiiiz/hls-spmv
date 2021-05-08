@@ -69,8 +69,15 @@ void spmv_kernel(
 }
 
 
-void spmv_stream(int rows_length[NUM_ROWS], int cols[NNZ], DTYPE values[NNZ], DTYPE y[SIZE], DTYPE x[SIZE])
+void spmv(int rowPtr[NUM_ROWS + 1], int cols[NNZ], DTYPE values[NNZ], DTYPE y[SIZE], DTYPE x[SIZE])
 {
+	// rowPtr to rows_length
+	int rows_length[NUM_ROWS] = {0};
+	for (int i = 1; i < NUM_ROWS + 1; i++) {
+#pragma HLS PIPELINE
+		rows_length[i - 1] = rowPtr[i] - rowPtr[i - 1];
+	}
+
 	int rows_length_pad[NUM_ROWS];
 	int new_nnz = 0;
 	for (int i = 0; i < NUM_ROWS; i++) {

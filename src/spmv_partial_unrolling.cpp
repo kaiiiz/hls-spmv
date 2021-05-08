@@ -11,7 +11,6 @@ L1: for (int i = 0; i < NUM_ROWS; i++) {
 #pragma HLS pipeline II=S
 			DTYPE yt = values[k] * x[columnIndex[k]];
 			L2_2: for (int j = 1; j < S; j++) {
-#pragma HLS unroll factor=S
 				if (k + j < rowPtr[i + 1]) {
 					yt += values[k+j] * x[columnIndex[k+j]];
 				}
