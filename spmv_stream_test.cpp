@@ -110,6 +110,7 @@ int main(){
 		rows_length[i - 1] = rowPtr[i] - rowPtr[i - 1];
 	}
 
+
 	spmv_stream(rows_length, columnIndex, values, y, x);
 	matrixvector(M, y_sw, x);
 
