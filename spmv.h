@@ -7,5 +7,7 @@ const static int NUM_ROWS = 256;// SIZE;
 typedef float DTYPE;
 void spmv(int rowPtr[NUM_ROWS+1], int columnIndex[NNZ],
 		  DTYPE values[NNZ], DTYPE y[SIZE], DTYPE x[SIZE]);
+void spmv_stream(int rows_length[NUM_ROWS], int cols[NNZ], DTYPE values[NNZ], DTYPE y[SIZE], DTYPE x[SIZE]);
+void mv(DTYPE A[SIZE][SIZE], DTYPE y[SIZE], DTYPE x[SIZE]);
 
 #endif // __MATRIXMUL_H__ not defined
